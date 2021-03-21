@@ -85,7 +85,7 @@ img {
     	</div>
     	<div class="col-sm-9">
     		<h3>Thong tin gio hang</h3>
-    		<table  class="table table-condensed">
+    		<table  class=" bg-light table table-condensed">
     			<caption>Thong tin gio hang cua ban</caption>
     			<thead>
     				<tr>
@@ -128,7 +128,7 @@ img {
 
     			</tbody>
     		</table>
-    		 <p>Tong tien la <?php echo number_format($total); ?> VND</p>
+    		 <p class="bg-light">Tong tien la <?php echo number_format($total); ?> VND</p>
     		<a href="list_product.php" ><input class="btn btn-primary" type="text" value="Tiep tuc mua hang"></a>
     		
     	</div>

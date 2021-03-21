@@ -105,12 +105,13 @@ input:focus {
             <h1 class="display-4"><?php 
            
             require_once('category.class.php');
-            require_once('product.class.php');
+          
             	$cate=Category::cate_product();
                 
 
             ?></h1>
             <?php 
+            require_once('product.class.php');
             if(!isset($_GET["id"]))
             {
                 header('Location:not_found.php');
@@ -119,7 +120,8 @@ input:focus {
             $id=$_GET["id"];
             $pro_de = reset(Product::get_product($id));
             $pro_relate=Product::list_product_ralate($pro_de["CateID"],$id);
-        } ?>
+        } 
+        ?>
         </div>
     </div>
     <div class="row">
@@ -147,8 +149,8 @@ input:focus {
             
         </div>
         <div class="footer text-center p-0">
-            <div class="col-lg-12 col-12 p-0">
-                <p class="order">Order Now</p>
+            <div  >
+               <button type="button" class="btn btn-primary" onclick="location.href='shopping_cart.php?id= <?php echo $pro_de["ProductID"];  ?>'">Mua hang</button>
             </div>
         </div>
     </div>
@@ -174,7 +176,7 @@ input:focus {
            
             <p class="text-danger"> <?php echo $proitem["ProductName"] ?></p>
               <p class="text-info"> <?php echo number_format($proitem["Price"] )?></p>
-              <p><button type="button" class="btn btn-primary">Mua Hang</button></p>
+              <p><button type="button" class="btn btn-primary">Chi Tiet</button></p>
         </div>
     </a>
         <?php

@@ -35,6 +35,24 @@ class Product
 		return $result;
 
 	}
+	public function update($id){
+		$file_temp=$this->picture['tmp_name'];
+		$user_file=$this->picture['name'];
+		$timestamp=date("Y").date("m").date("d").date("h").date("i").date("s");
+		$file_path="uploads/".$timestamp.$user_file;
+		if(move_uploaded_file($file_temp,$file_path)==false)
+		{
+			return false;
+		}
+		$connect=mysqli_connect("localhost", "root", "", "ecommerce");
+		if($connect === true){
+    		die("ERROR: Could not connect. " . mysqli_connect_error());
+	}
+		$sql ="UPDATE product SET ProductName='$this->productName',CateID='$this->CateID', Price='$this->price', Quantity='$this->quantity',Description='$this->description',Picture='$file_path' WHERE ProductID='$id' ";
+		$result=mysqli_query($connect,$sql);
+		return $result;
+
+	}
 	public static function list_product(){
 		$row=array();
 		$connect=mysqli_connect("localhost", "root", "", "ecommerce");
@@ -65,6 +83,14 @@ class Product
 			$row[]=$item;
 		}
 		return $row;
+	}
+	public static function del_product($id){
+		
+		$connect=mysqli_connect("localhost", "root", "", "ecommerce");
+		$sql = "DELETE FROM product WHERE ProductID='$id' ";
+		$result=mysqli_query($connect,$sql);
+		
+		return $result;
 	}
 	public static function list_product_ralate($cateid,$id){
 		$row=array();
