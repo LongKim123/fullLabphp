@@ -14,7 +14,7 @@ if(isset($_POST["btnsubmit"])){
   $result=$newUser->save();
   if($result){
   	$_SESSION['user']=$u_name;
-  	header("Location:list_product.php");
+  	header("Location:listproduct_new.php");
   	?>
   	<script>alert('Xin Chao'+<?php $_SESSION['user'];  ?>)</script>
 <?php

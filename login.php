@@ -1,6 +1,7 @@
-<?php 
+<?php
+ session_start();
 require_once('user.class.php');
-require_once('header.php');
+
 if(isset($_POST["btnsubmit"])){
   
   $email=$_POST["email"];
@@ -9,7 +10,7 @@ if(isset($_POST["btnsubmit"])){
   $result=reset(User::checkLogin($email,$password));
   if($result){
     $_SESSION['user']=$result["UserName"];
-    header("Location:list_product.php");
+    header("Location:listproduct_new.php");
   }
   else{
   header("Location:login.php");

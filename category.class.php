@@ -20,8 +20,20 @@ class Category
 		}
 		return $row;
 	}
+	public static function find_cate($cateid){
+		$connect=mysqli_connect("localhost", "root", "", "ecommerce");
+		$sql="SELECT * From category WHere CateID='$cateid' ";
+		$result=mysqli_query($connect,$sql);
+		while ($row = mysqli_fetch_assoc($result)) {
+   			$ngu= $row['CategoeyName'];
+   			}
+   			
+   			return $ngu;
+	}
+
 
 	
 
 }
+
  ?>

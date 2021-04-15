@@ -1,165 +1,152 @@
-
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-    <style>
-head,
+<style>
 body {
-    background-color: #FFCCBC
+  background-color: #fdf1ec;
 }
 
-.container {
-    margin-top: 40px;
-    margin-bottom: 40px
+.wrapper {
+  height: 420px;
+  width: 654px;
+  margin: 50px auto;
+  border-radius: 7px 7px 7px 7px;
+  /* VIA CSS MATIC https://goo.gl/cIbnS */
+  -webkit-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
 }
 
-img {
-    width: 100%
+.product-img {
+  float: left;
+  height: 420px;
+  width: 327px;
 }
 
-.card-title {
-    justify-content: space-between;
-    margin-top: 25px
+.product-img img {
+  border-radius: 7px 0 0 7px;
 }
 
-.register {
-    font-size: 10px;
-    position: relative;
-    bottom: 5px
+.product-info {
+  float: left;
+  height: 420px;
+  width: 327px;
+  border-radius: 0 7px 10px 7px;
+  background-color: #ffffff;
 }
 
-.cvc {
-    width: 2.5em;
-    position: absolute
+.product-text {
+  height: 300px;
+  width: 327px;
 }
 
-input {
-    border: none;
-    padding-left: 4px;
-    background-color: #f7f1f1;
-    font-size: 15px
+.product-text h1 {
+  margin: 0 0 0 38px;
+  padding-top: 52px;
+  font-size: 34px;
+  color: #474747;
 }
 
-.card-body {
-    background-color: #f7f1f1
+.product-text h1,
+.product-price-btn p {
+  font-family: 'Bentham', serif;
 }
 
-.footer {
-    background-color: #00BCD4;
-    color: white
+.product-text h2 {
+  margin: 0 0 47px 38px;
+  font-size: 13px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #d2d2d2;
+  letter-spacing: 0.2em;
 }
 
-.footer:hover {
-    cursor: pointer;
-    background-color: #0097A7
+.product-text p {
+  height: 125px;
+  margin: 0 0 0 38px;
+  font-family: 'Playfair Display', serif;
+  color: #8d8d8d;
+  line-height: 1.7em;
+  font-size: 15px;
+  font-weight: lighter;
+  overflow: hidden;
 }
 
-.numbr {
-    border-bottom: 1px solid #c1bcbc;
-    padding-bottom: 8px
+.product-price-btn {
+  height: 103px;
+  width: 291px;
+  margin-top: 17px;
+  position: relative;
 }
 
-.line2 {
-    border-bottom: 1px solid #c1bcbc;
-    padding-bottom: 8px;
-    padding-left: 0px
+.product-price-btn p {
+  display: inline-block;
+  position: absolute;
+  top: -100px;
+  height: 50px;
+  font-family: 'Trocchi', serif;
+  margin: 0 0 0 38px;
+  font-size: 28px;
+  font-weight: lighter;
+  color: #474747;
 }
 
-input.focus,
-input:focus {
-    outline: 0;
-    box-shadow: none !important
+span {
+  display: inline-block;
+  height: 50px;
+  font-family: 'Suranna', serif;
+  font-size: 34px;
 }
 
-.numbr.numbr.hover,
-.numbr:hover {
-    border-bottom: 1px solid aqua
+.product-price-btn button {
+  float: right;
+  display: inline-block;
+  height: 50px;
+  width: 200px;
+  margin: 30px 40px 0 16px;
+  box-sizing: border-box;
+  border: transparent;
+  border-radius: 60px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  background-color: #9cebd5;
+  cursor: pointer;
+  outline: none;
 }
 
-.line2.hover,
-.line2:hover {
-    border-bottom: 1px solid aqua
-}
+.product-price-btn button:hover {
+  background-color: #79b0a1;
+}  
+</style>
 
-.fa-lock {
-    margin-right: 10px
-}
-
-.order {
-    margin-top: 10px
-}
-    	
-    </style>
-  </head>
-  <body>
-    <div class="container py-5">
-    <div class="row text-center text-white mb-5">
-        <div class="col-lg-7 mx-auto">
-            <h1 class="display-4"><?php 
-           
-            require_once('category.class.php');
-          
-            	$cate=Category::cate_product();
-                
-
-            ?></h1>
-            <?php 
-            require_once('product.class.php');
-            if(!isset($_GET["id"]))
-            {
-                header('Location:not_found.php');
-            }
-            else{
-            $id=$_GET["id"];
-            $pro_de = reset(Product::get_product($id));
-            $pro_relate=Product::list_product_ralate($pro_de["CateID"],$id);
-        } 
-        ?>
-        </div>
+ <div class="wrapper">
+    <div class="product-img">
+      <img src="<?php echo  $pro_de['Picture'] ; ?>" height="420" width="327">
     </div>
+    <div class="product-info">
+      <div class="product-text">
+        <h1><b><?php echo $pro_de["ProductName"];?></b></h1>
+       
+        <p><?php echo $pro_de["Description"];?><br> functional objects. The surfaces<br> appear to be sliced and pulled aside,<br> allowing room for growth. </p>
+      </div>
+      <div class="product-price-btn">
+        <p><span><?php echo number_format($pro_de["Price"]);?></span>VNĐ</p>
+        <button type="button" onclick="location.href='shopping_cart.php?id= <?php echo $pro_de["ProductID"];  ?>'">buy now</button>
+      </div>
+    </div>
+  </div>
+
     <div class="row">
-    	<div class="col-sm-3">
-    		<h3>Danh muc</h3>
-    		<ul class="list-group">
-    			<li class="list-group-item"><a href="list_product.php"> All</a></li>
-    			<?php foreach($cate as $cateitem)
-    			{ ?>
-    			<li class="list-group-item"><a href="list_product.php?cateid=<?php echo $cateitem["CateID"] ?> " > <?php echo $cateitem["CategoeyName"]  ?></a></li>
-    		<?php } ?>
+     
 
-    		</ul>
-    		
-    	</div>
- 
-    <div class="card mx-auto col-sm-4 col-8 mt-3 p-0"> <img class='mx-auto pic' src=" <?php echo  $pro_de['Picture'] ; ?> " />
-        <div class="card-title d-flex px-4">
-            <p class="item text-muted">  <label class="register">&reg;</label> <?php echo $pro_de["ProductName"];?></p>
-            <p><?php echo number_format($pro_de["Price"]);?></p>
-        </div>
-        <div class="card-body">
-            <p class="text-muted"><?php echo $pro_de["Description"];?></p>
-           
-            
-        </div>
-        <div class="footer text-center p-0">
-            <div  >
-               <button type="button" class="btn btn-primary" onclick="location.href='shopping_cart.php?id= <?php echo $pro_de["ProductID"];  ?>'">Mua hang</button>
-            </div>
-        </div>
-    </div>
    
 
       
     </div>
     <div class="row">
-         <h2>San Pham Lien Quan</h2>
+         <h2><b>Sản Phẩm Liên Quan</b></h2>
         
     </div>
     <div class="row">
@@ -169,27 +156,18 @@ input:focus {
         foreach($pro_relate as $proitem)
         {
         ?>
-        <a href="product_detail.php?id= <?php echo $proitem["ProductID"];  ?>">
+        <a href="listproduct_new.php?id= <?php echo $proitem["ProductID"];  ?>">
          <div class="col-sm-4">
 
-            <img src="<?php echo $proitem['Picture'] ?>" class="img-repsponsive" style="width:100%" alt="">
+            <img src="<?php echo $proitem['Picture'] ?>" class="img-repsponsive" style="width:250px;
+            height: 350px;" alt="">
            
-            <p class="text-danger"> <?php echo $proitem["ProductName"] ?></p>
-              <p class="text-info"> <?php echo number_format($proitem["Price"] )?></p>
-              <p><button type="button" class="btn btn-primary">Chi Tiet</button></p>
+            <p class="text-danger" style=" width:200px;"><b> <?php echo $proitem["ProductName"] ?></b></p>
+              <p class="text-info"> <b><?php echo number_format($proitem["Price"] )?></b></p>
+              <p style="width:200px;"><button type="button"  class="btn btn-primary">Chi Tiêt</button></p>
         </div>
     </a>
         <?php
     } ?>
     </div>
 
-</div>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
