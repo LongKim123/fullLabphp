@@ -191,8 +191,8 @@
                                     foreach($_SESSION["cart_item"] as $item) 
                                         {
                                             $id=$item["pro_id"];
-                                            $product=Product::get_product($id);
-                                            $prod=reset($product);
+                                            $prod=Product::get_product($id);
+                                           
                                             $total +=$item["quantity"]*$prod["Price"];
                                             ?>
                                 <tr>

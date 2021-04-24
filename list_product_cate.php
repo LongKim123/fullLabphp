@@ -46,7 +46,7 @@
                                     <img src="<?php echo $item['Picture']; ?>"
                                         class="img-fluid" style=" width: 300px;height:450px;"  alt="" />
 
-                                    <a href="listproduct_new.php?id= <?php echo $item["ProductID"];  ?>">
+                                    <a href="listproduct_new.php?id=<?php echo $item['ProductID'];  ?>">
                                         <div class="mask waves-light waves-effect waves-light"></div>
                                     </a>
                                 </div>

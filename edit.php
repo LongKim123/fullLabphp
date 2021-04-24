@@ -66,7 +66,7 @@ img {
     <?php 
 
                 $id=$_GET["id"];
-                $pro_de=reset(Product::get_product($id)); ?>
+                $pro_de=Product::get_product($id); ?>
     <h2> Form Sua San Pham</h2>
   	<form method="post" enctype="multipart/form-data" class="bg-light p-4 m-4">
   <div class="form-group">

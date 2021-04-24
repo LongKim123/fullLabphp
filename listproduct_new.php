@@ -138,7 +138,7 @@
 
                 
                 $id=$_GET["id"];
-                $pro_de =reset(Product::get_product($id));
+                $pro_de =Product::get_product($id);
                 $pro_relate=Product::list_product_ralate($pro_de["CateID"],$id);
 
                 include("product_detail.php");

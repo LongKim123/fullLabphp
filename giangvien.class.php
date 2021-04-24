@@ -1,19 +1,23 @@
 <?php 	
 
-class Category
+class GiangVien
 {
-	public $cateID;
-	public $categoryName;
-	public $description;
-	public function __construct($cate_name,$desc){
-		$this->categoryName=$cate_name	;
-		$this->description=$desc;
+	public $ID;
+	public $Name;
+	public $MaSo;
+	public $NamSinh;
+	public $IDNoiSinh;
+	public $HocVi;
+	public $LinhVuc;
+	public function __construct($name,$ms,$namsinh,$noisinh,$hocvi,$linhvuc){
+
+		
 		
 	}
-		public static function cate_product(){
+		public static function get_gv(){
 		$row=array();
 		$connect=mysqli_connect("localhost", "root", "", "ecommerce");
-		$sql="SELECT * From category";
+		$sql="SELECT * From giangvien";
 		$result=mysqli_query($connect,$sql);
 		while($item= mysqli_fetch_assoc($result)){
 			$row[]=$item;
@@ -30,7 +34,7 @@ class Category
    			
    			return $ngu;
 	}
-	
+
 
 
 	
